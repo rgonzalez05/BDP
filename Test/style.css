@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #ffe6ef, #fff7fa);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4a1f2c;
+}
+
+main {
+    width: 90%;
+    max-width: 430px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 8px;
+}
+
+#status {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+#touchArea {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(120, 40, 70, 0.2);
+
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+}
+
+#heartContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#heartPrint {
+    width: 140px;
+    height: 140px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 180 C40 140 10 100 10 60 C10 25 40 10 70 10 C90 10 100 30 100 30 C100 30 110 10 130 10 C160 10 190 25 190 60 C190 100 160 140 100 180Z' fill='none' stroke='%23ff4f8b' stroke-width='4'/%3E%3Cpath d='M100 165 C50 130 25 95 25 60 C25 35 45 25 70 25 C88 25 100 40 100 40 C100 40 112 25 130 25 C155 25 175 35 175 60 C175 95 150 130 100 165Z' fill='none' stroke='%23ff4f8b' stroke-width='4'/%3E%3Cpath d='M100 150 C60 120 40 90 40 60 C40 45 55 40 70 40 C88 40 100 55 100 55 C100 55 112 40 130 40 C145 40 160 45 160 60 C160 90 140 120 100 150Z' fill='none' stroke='%23ff4f8b' stroke-width='4'/%3E%3C/svg%3E");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: all 0.3s ease;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0.7;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Estado esperando */
+#heartPrint.waiting {
+    animation: pulse 1.2s infinite;
+}
+
+/* Estado conectado */
+#heartPrint.connected {
+    animation: connectedPulse 0.6s infinite;
+    filter:
+        drop-shadow(0 0 10px #ff6fa3)
+        drop-shadow(0 0 20px #ff6fa3)
+        drop-shadow(0 0 30px #ff6fa3);
+}
+
+.hint {
+    margin-top: 16px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Corazón grande al conectar */
+#loveBurst {
+    position: absolute;
+    font-size: 80px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#loveBurst.show {
+    animation: loveBurst 1.2s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes connectedPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes loveBurst {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
