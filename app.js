@@ -189,3 +189,6 @@ onValue(roomRef, (snapshot) => {
     message.textContent =
         "Coloca tu pulgar aquí";
 });
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+});

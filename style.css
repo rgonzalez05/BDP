@@ -150,3 +150,39 @@ h1 {
         transform: scale(2);
     }
 }
+/* Evita selección de texto */
+* {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Evita menú contextual en iPhone */
+* {
+    -webkit-touch-callout: none;
+}
+
+/* Evita resaltar elementos al tocar */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Evita arrastrar imágenes */
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+/* Área táctil */
+#touchArea,
+#heartContainer,
+#heartPrint {
+    touch-action: none;
+}
+#message,
+.hint,
+h1,
+#status {
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
